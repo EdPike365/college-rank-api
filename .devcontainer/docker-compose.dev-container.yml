@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  app:
+    build:
+      # Dockerfile.dev is in this .devcontainer folder, context: .
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        VARIANT: 11
+        INSTALL_MAVEN: true
+        INSTALL_GRADLE: false
+        NODE_VERSION: "lts/*"
+    init: true
+    volumes:
+      # This is where VS Code should expect to find your project's source code
+      # and the value of "workspaceFolder" in .devcontainer/devcontainer.json
+      - ..:/workspace:cached
+      # Uncomment the next line to use Docker from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker-compose for details.
+      - /var/run/docker.sock:/var/run/docker.sock 
+      
+    container_name: "Dev-Container"
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+
+# we can create permanent devvolumes here
+# volumes:
+  #my-app:

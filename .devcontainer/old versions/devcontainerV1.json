@@ -1,15 +1,18 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.194.0/containers/java
-// the "name" seems to only affect the "DEV CONTAINER: name" at top of vscode file window
-// the "name" does not get reflected in the container name in docker desktop
 {
   "name": "College Rank API",
-  "dockerComposeFile": "docker-compose.dev-container.yml",
-  "service": "app",
-
-  // The optional 'workspaceFolder' property is the path VS Code should open by default when
-  // connected. This is typically a volume mount in .devcontainer/docker-compose.dev-container.yml
-  "workspaceFolder": "/workspace",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      // Update the VARIANT arg to pick a Java version: 11, 16
+      "VARIANT": "11",
+      // Options
+      "INSTALL_MAVEN": "true",
+      "INSTALL_GRADLE": "false",
+      "NODE_VERSION": "lts/*"
+    }
+  },
 
   // Set *default* container specific settings.json values on container create.
   "settings": {
@@ -23,11 +26,9 @@
   // "forwardPorts": [],
 
   // From https://github.com/microsoft/vscode-dev-containers/tree/main/containers/docker-from-docker
-  // "--init" tells docker run to use the entry point in Dockerfile, if specified ("/usr/local/share/docker-init.sh")
-  // "-name myName" causes error because the name you list will be prepended to the auto generated one from .devcontainer
   "runArgs": ["--init"],
   "mounts": [
-    //"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
   ],
 
   // Use 'postCreateCommand' to run commands after the container is created.
