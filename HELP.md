@@ -1,11 +1,13 @@
 # Read Me First
+
 The following was discovered as part of building this project:
 
 * The original package name 'com.edpike365.college-rank-api' is invalid and this project uses 'com.edpike365.collegerankapi' instead.
 
-# Getting Started
+## Getting Started
 
 ### Reference Documentation
+
 For further reference, please consider the following sections:
 
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
@@ -16,6 +18,7 @@ For further reference, please consider the following sections:
 * [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.5.5/reference/htmlsingle/#boot-features-jpa-and-spring-data)
 
 ### Guides
+
 The following guides illustrate how to use some features concretely:
 
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
@@ -23,3 +26,9 @@ The following guides illustrate how to use some features concretely:
 * [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
 * [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
 
+## Commands
+
+build: mvn clean install
+run: mvn spring-boot:run
+If shutdown is enabled, [run this to shutdown tomcat:](//https://www.baeldung.com/spring-boot-shutdown)
+curl -X POST localhost:port/actuator/shutdown
