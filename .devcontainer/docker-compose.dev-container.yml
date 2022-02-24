@@ -7,8 +7,8 @@ services:
       dockerfile: Dockerfile.dev
       args:
         VARIANT: 11
-        INSTALL_MAVEN: true
-        INSTALL_GRADLE: false
+        INSTALL_MAVEN: "true"
+        INSTALL_GRADLE: "false"
         NODE_VERSION: "lts/*"
     init: true
     volumes:
@@ -16,12 +16,11 @@ services:
       # and the value of "workspaceFolder" in .devcontainer/devcontainer.json
       - ..:/workspace:cached
       # Uncomment the next line to use Docker from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker-compose for details.
-      - /var/run/docker.sock:/var/run/docker.sock 
-      
+      - /var/run/docker.sock:/var/run/docker.sock
+
     container_name: "Dev-Container"
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
-
 # we can create permanent devvolumes here
 # volumes:
-  #my-app:
+#my-app:
